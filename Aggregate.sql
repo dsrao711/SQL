@@ -53,3 +53,31 @@ LIMIT 1;
 -- The sum of all values in LONG_W rounded to a scale of 2 decimal places.
 
 SELECT ROUND(SUM(LAT_N) , 2) AS lat , ROUND(SUM(LONG_W) , 2) AS lon FROM STATION;
+
+
+-- Query the sum of Northern Latitudes (LAT_N) from STATION having values greater than ___ and less than ___ . Truncate your answer to  decimal places.
+
+SELECT ROUND(SUM(LAT_N) , 4)
+FROM STATION
+WHERE LAT_N > 38.7880 AND LAT_N < 137.2345
+
+-- Query the greatest value of the Northern Latitudes (LAT_N) from STATION that is less than . Truncate your answer to  4 decimal places
+
+SELECT MAX(ROUND(LAT_N , 4))
+FROM STATION
+WHERE LAT_N < 137.2345
+
+
+-- Query the Western Longitude (LONG_W) for the largest Northern Latitude (LAT_N) in STATION that is less than . Round your answer to  decimal places.
+
+SELECT ROUND(LONG_W , 4) 
+FROM STATION
+WHERE LAT_N < 137.235
+ORDER BY LAT_N DESC
+LIMIT 1;
+
+-- Query the smallest Northern Latitude (LAT_N) from STATION that is greater than . Round your answer to  decimal places.
+
+SELECT MIN(ROUND(LAT_N , 4))
+FROM STATION
+WHERE LAT_N > 38.7780
